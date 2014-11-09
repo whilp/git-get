@@ -1,3 +1,4 @@
+// git-get is like `go get` but for any Git source.
 package main
 
 import (
