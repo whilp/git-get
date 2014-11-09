@@ -27,3 +27,7 @@ Copy `git-get` to a directory on your `$PATH`. `git` will delegate the `get` sub
 ```
 git get github.com:whilp/git-get
 ```
+
+## License
+
+MIT; Copyright (c) 2014 Will Maier <wcmaier@m.aier.us>
