@@ -20,7 +20,7 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "Arguments:")
 	fmt.Fprintln(os.Stderr, "  REPO     repository to clone")
 	fmt.Fprintln(os.Stderr, "Environment variables:")
-	fmt.Fprintln(os.Stderr, "  GITPATH  base of local tree of Git clones")
+	fmt.Fprintln(os.Stderr, "  GITPATH  base of local tree of Git clones; defaults to $HOME/src")
 	os.Exit(2)
 }
 
