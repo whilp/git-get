@@ -3,10 +3,13 @@
 Like `go get`, but for any `git` source.
 
 ```
- $ ./git-get -h
+$ git-get -h
 usage: git-get REPO
 
 Clone a Git repository, preserving remote structure under GITPATH.
+
+  -version
+    	print version and exit
 
 Arguments:
   REPO     repository to clone
