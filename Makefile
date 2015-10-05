@@ -1,5 +1,5 @@
 VERSION := $(shell git describe --long --tags)
-TAG := $(shell git tag)
+TAG := $(shell git describe --tags)
 INSTALL := go install -ldflags "-X main.version=$(VERSION)" ./...
 NAME := git-get
 BINARY := $(NAME)-$(shell uname -s)-$(shell uname -m)
