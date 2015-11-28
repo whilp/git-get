@@ -21,6 +21,7 @@ import (
 	"flag"
 	"fmt"
 	"log"
+	"net/url"
 	"os"
 	"os/exec"
 	"os/user"
@@ -59,22 +60,39 @@ func lsRemote(remote string) (string, error) {
 	return strings.TrimSpace(string(out[:])), nil
 }
 
-// stripUser removes an optional 'user@' portion from a Git remote.
-func stripUser(remote string) string {
-	fields := strings.SplitN(remote, "@", 2)
-	switch len(fields) {
-	case 1:
-		remote = fields[0]
-	case 2:
-		remote = fields[1]
-	}
-
-	return remote
-}
-
 // importPath converts a Git remote path to a local path.
 func importPath(remote string) string {
-	return strings.Replace(stripUser(remote), ":", "/", 1)
+	var (
+		h         string
+		p         string
+		localhost = "localhost/"
+	)
+	u, _ := url.Parse(remote)
+	if u.Host == "" && u.Opaque != "" {
+		fields := strings.SplitN(remote, ":", 2)
+		h = fields[0]
+		p = "/" + fields[1]
+	} else if u.Scheme == "" || u.Host == "" {
+		fields := strings.SplitN(remote, ":", 2)
+		if u.Scheme == "" && len(fields) == 2 && !strings.Contains(fields[0], "/") {
+			p = fields[1]
+			parts := strings.SplitN(fields[0], "@", 2)
+			switch len(parts) {
+			case 1:
+				h = parts[0]
+			case 2:
+				h = parts[1]
+			}
+			h += "/"
+		} else {
+			h = localhost
+			p = u.Path
+		}
+	} else {
+		h = strings.TrimRight(u.Host, ":0123456789")
+		p = u.Path
+	}
+	return path.Clean(h + p)
 }
 
 // getGitpath finds a suitable value for GITPATH.
