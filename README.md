@@ -27,10 +27,13 @@ The default value for `GITPATH` is intended to compatible with a `GOPATH` of `$H
 For example:
 
 ```console
+curl -LO https://github.com/whilp/git-get/releases/download/v0.7/git-get-darwin-amd64
+curl -LO https://github.com/whilp/git-get/releases/download/v0.7/git-get-darwin-amd64.sha256
+shasum -a 256 -p -c git-get-darwin-amd64.sha256
 export PATH=~/bin:$PATH
+chmod a+x git-get-darwin-amd64
 mkdir -p ~/bin
-curl -Lo ~/bin/git-get https://github.com/whilp/git-get/releases/download/v0.4/git-get-Darwin-x86_64
-chmod a+x ~/bin/git-get
+mv git-get-darwin-amd64 ~/bin/git-get
 ```
 
 `git` will delegate the `get` subcommand to `git-get`, such that the following works:
