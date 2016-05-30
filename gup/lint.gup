@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -eux
+go get github.com/alecthomas/gometalinter
+go get golang.org/x/tools/cmd/cover
+gometalinter --install
+gometalinter ./...

@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -eux
+
+base="${2%.sha256}"
+gup -u "${base}"
+sha256sum "${base}" > "$1"

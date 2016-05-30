@@ -1,5 +1,4 @@
-// git-get is like `go get` but for any Git source.
-
+//git-get is like `go get` but for any Git source.
 /*
  * Copyright (c) 2014 Will Maier <wcmaier@m.aier.us>
  *

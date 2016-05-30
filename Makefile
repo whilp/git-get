@@ -1,29 +1,18 @@
-VERSION := $(shell git describe --long --tags)
-TAG := $(shell git describe --tags)
-INSTALL := go install -ldflags "-X main.version=$(VERSION)" ./...
-NAME := git-get
-BINARY := $(NAME)-$(shell uname -s)-$(shell uname -m)
-CHECKSUM := $(BINARY).sha256
+# Modify this to point to your repository-local
+# gup exectable
+GUP=tools/gup
 
-clean:
-	rm -f $(NAME) $(BINARY) $(CHECKSUM)
+# Default to building the `all` target
+all: phony ${GUP}
+	@+${GUP} all
 
-install:
-	$(INSTALL)
+# Catch-all target which delgates to `gup`
+%: phony ${GUP}
+	@+${GUP} $@
 
-$(NAME):
-	GOBIN=$(CURDIR) $(INSTALL)
+# Remove self-rules
+Makefile: ;
+${GUP}: ;
 
-binary: $(BINARY)
-$(BINARY): $(NAME)
-	mv $< $@
-
-checksum: $(CHECKSUM)
-$(CHECKSUM): $(BINARY)
-	shasum -p -a 256 $< > $@
-
-release: $(BINARY) $(CHECKSUM)
-	hub release create -a $(BINARY) -m $(TAG) -a $(CHECKSUM) $(TAG)
-
-test:
-	go test -v ./...
+# Always rebuild gup targets
+.PHONY: phony

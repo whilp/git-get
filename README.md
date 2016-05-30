@@ -21,7 +21,19 @@ The default value for `GITPATH` is intended to compatible with a `GOPATH` of `$H
 
 ## Installation
 
-Download the [latest release](https://github.com/whilp/git-get/releases/latest). Copy `git-get` to a directory on your `$PATH`. `git` will delegate the `get` subcommand to `git-get`, such that the following works:
+- Download the [latest release](https://github.com/whilp/git-get/releases/latest).
+- Copy `git-get` to a directory on your `$PATH`.
+
+For example:
+
+```console
+export PATH=~/bin:$PATH
+mkdir -p ~/bin
+curl -Lo ~/bin/git-get https://github.com/whilp/git-get/releases/download/v0.4/git-get-Darwin-x86_64
+chmod a+x ~/bin/git-get
+```
+
+`git` will delegate the `get` subcommand to `git-get`, such that the following works:
 
 ```
 git get github.com:whilp/git-get
