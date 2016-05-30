@@ -3,5 +3,6 @@
 set -eux
 
 base="${2%.sha256}"
+dir="${2%/*}"
 gup -u "${base}"
-sha256sum "${base}" > "$1"
+(cd "$dir" && sha256sum "${base##*/}") > "$1"
