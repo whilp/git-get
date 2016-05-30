@@ -1,4 +1,5 @@
 shasum:
-  release/**/*.sha256
+  release/*.sha256
 compile:
-  release/**
+  release/*
+  !release/*.sha256

@@ -1,9 +1,9 @@
 #!/bin/sh
 
 set -eux
+
 version=$(git describe --long --tags)
-name="${2#*/}"
-os="${name%%-*}"
-release="${2%/*}"
-arch="${release##*-}"
+base="${2##*/git-get-}"
+os="${base%-*}"
+arch="${base#*-}"
 GOARCH="$arch" GOOS="$os" go build -o "$1" -ldflags "-X main.version=${version}" ./...
