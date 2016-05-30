@@ -1,0 +1,20 @@
+language: go
+
+go:
+  - 1.5
+  
+install:
+  - make all lint test
+
+deploy:
+  provider: releases
+  api_key:
+    secure: "jhOTLb5Yr5LloSbI24hDjvCnmBnJEnIq/Oyilxvc8ZT/T76i0Ts2QZNFwXphR/+VRqtQRHpZUT8+j1qtKmBbHjirfbGGJ6ciHPuvpNqnAHcGByrvdpv8lh3UaBSH/gyySt9SZDHFZFL2/LVats+Rf9CpAmqyrmiqw5AgS0nYjwc="
+  file:
+    - release/linux-amd64/git-get
+    - release/linux-amd64/git-get.sha256
+    - release/darwin-amd64/git-get
+    - release/darwin-amd64/git-get.sha256
+  skip_cleanup: true
+  on:
+    tags: true  
