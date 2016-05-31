@@ -2,7 +2,7 @@
 
 set -eux
 
-exe=$(which hub 2>/dev/null)
+exe=$(which hub 2>/dev/null || true)
 if [ "${exe:-x}" != x ]; then
    cp "$exe" "$1"
    exit 0
