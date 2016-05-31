@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -eux
+
+gup -u git-get-linux-amd64 \
+       git-get-linux-amd64.sha256 \
+       git-get-darwin-amd64 \
+       git-get-darwin-amd64.sha256

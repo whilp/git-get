@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -eux
+
+gup --always
+gup -u all ../tools/hub
+
+tag=$(git describe --long --tags)
+assets=""
+for i in *; do
+    assets="$assets -a $i"
+done
+hub release create $assets -m "${tag}" "${tag}"
