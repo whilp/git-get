@@ -7,7 +7,7 @@ script: make ci
     
 deploy:
   provider: script
-  script: make release
+  script: make release/github
   skip_cleanup: true
   on:
     tags: true  
