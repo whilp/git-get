@@ -10,4 +10,5 @@ assets=""
 for i in *; do
     assets="$assets -a $i"
 done
-hub release create $assets -m "${tag}" "${tag}"
+
+hub release create $assets -c master -m "${tag}" "${tag}"
