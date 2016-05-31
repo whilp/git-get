@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -eux
+
+[ -z "${TRAVIS_PULL_REQUEST}" ] || gup -u lint test
+gup -u all

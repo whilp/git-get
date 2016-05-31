@@ -2,8 +2,4 @@
 
 set -eux
 
-gup -u \
-    release/git-get-linux-amd64 \
-    release/git-get-linux-amd64.sha256 \
-    release/git-get-darwin-amd64 \
-    release/git-get-darwin-amd64.sha256
+gup -u release/all
