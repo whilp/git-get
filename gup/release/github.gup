@@ -12,4 +12,4 @@ for i in *; do
 done
 
 # Expects GITHUB_TOKEN (or GITHUB_USER and GITHUB_PASSWORD).
-../tools/hub release create $assets -c master -m "${tag}" "${tag}"
+hub release create $assets -c master -m "${tag}" "${tag}"
