@@ -2,5 +2,5 @@
 
 set -eux
 
-[ -z "${TRAVIS_PULL_REQUEST}" ] || gup -u lint test
+[ "${TRAVIS_PULL_REQUEST}" == "true" ] && gup -u lint test
 gup -u all

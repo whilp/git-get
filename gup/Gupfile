@@ -1,5 +1,5 @@
 shasum:
-  release/*.sha256
+  release/git-get-*.sha256
 compile:
-  release/*
-  !release/*.sha256
+  release/git-get-*
+  !release/git-get-*.sha256
