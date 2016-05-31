@@ -5,7 +5,7 @@ set -eux
 gup --always
 gup -u all ../tools/hub
 
-tag=$(git describe --long --tags)
+tag=$(git describe --tags)
 assets=""
 for i in *; do
     assets="$assets -a $i"
