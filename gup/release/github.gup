@@ -11,4 +11,5 @@ for i in *; do
     assets="$assets -a $i"
 done
 
+# Expects GITHUB_TOKEN (or GITHUB_USER and GITHUB_PASSWORD).
 hub release create $assets -c master -m "${tag}" "${tag}"
